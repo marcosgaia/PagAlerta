@@ -1,0 +1,9 @@
+{
+  "name": "PagAlerta",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "n8n"
+  }
+}
