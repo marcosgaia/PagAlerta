@@ -1,18 +1,23 @@
 # Dockerfile para PagAlerta
 
 # Usa a imagem oficial do n8n
-FROM n8nio/n8n
+FROM n8nio/n8n:latest
 
 # Define as variáveis de ambiente
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=admin
-ENV N8N_BASIC_AUTH_PASSWORD=senha123
-ENV N8N_HOST=pagalerta.up.railway.app
-ENV N8N_PORT=5678
-ENV WEBHOOK_URL=https://pagalerta.up.railway.app
+ENV N8N_BASIC_AUTH_ACTIVE=true \
+    N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER} \
+    N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD} \
+    N8N_HOST=${N8N_HOST} \
+    N8N_PORT=${N8N_PORT} \
+    WEBHOOK_URL=${WEBHOOK_URL} \
+    N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY} \
+    N8N_DATABASE_FILE=/data/database.sqlite
 
 # Exponha a porta do n8n
 EXPOSE 5678
 
-# Comando para iniciar o n8n
+# Cria um diretório para os dados do n8n
+VOLUME ["/data"]
+
+# Define o ponto de entrada padrão
 CMD ["n8n"]
