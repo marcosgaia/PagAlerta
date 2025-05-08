@@ -1,0 +1,17 @@
+# Variáveis de ambiente
+src/config.env
+
+# Tokens e chaves privadas
+*.key
+*.pem
+*.token
+*.secret
+
+# Dados do n8n
+n8n/
+*.sqlite
+
+# Logs temporários
+*.log
+__pycache__/
+node_modules/
